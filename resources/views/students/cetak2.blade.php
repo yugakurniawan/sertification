@@ -32,7 +32,7 @@
 </head>
 
 <body>
-    <img src="/print_area_kajsdjkawdoilmasdmlamwdipmqwd/IJAZAH DESIGN BELAKANG final.png"
+    <img src="/print_area_kajsdjkawdoilmasdmlamwdipmqwd/IJAZAH DESIGN BELAKANG revisi.png"
         style="position:absolute; width:210mm; height:297mm; top:0; z-index:-1;">
     <div style="position:absolute; width:210mm; height:297mm; top:0; z-index:1;">
         <div>
@@ -51,10 +51,7 @@
             <span style="font-size: 15pt; position: relative; top:240px; left:250px">{{ $student->angkatan }}</span>
         </div>
         <div>
-            <span style="font-size: 15pt; position: relative; top:0px; left:640px">{{ $student->angkatan }}</span>
-        </div>
-        <div>
-            <span style="font-size: 15pt; position: relative; top:13px; left:640px">{{ $student->angkatan }}</span>
+            <span style="font-size: 15pt; position: relative; top:36px; left:640px">{{ $student->angkatan }}</span>
         </div>
         <div style="display: flex; justify-content: center;">
             <div style="margin-top: 230px; width:17cm;">
@@ -128,7 +125,7 @@
         </div>
 
         <script src="https://code.highcharts.com/highcharts.js"></script>
-        <script>
+        {{-- <script>
 
             Highcharts.chart('chartNilai', {
                 chart: {
@@ -184,7 +181,70 @@
                 }]
             });
 
-        </script>
+        </script> --}}
+        <script>
+
+            Highcharts.chart('chartNilai', {
+
+            chart : {
+                backgroundColor: 'transparent'
+            },
+
+            title: {
+                text: 'Chart Nilai Semester Mahasiswa'
+            },
+
+            yAxis: {
+                title: {
+                    text: 'Nilai'
+                }
+            },
+
+            xAxis: {
+                categories:
+                    {!!json_encode($semester) !!}
+                ,
+                min: 1
+            },
+
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle',
+            },
+
+            plotOptions: {
+                    series: {
+                        color: 'black'
+                    },
+                    areaspline: {
+                        fillOpacity: 0.5
+                    }
+                },
+
+            series: [{
+                name: 'Semester',
+                data: {!!json_encode($nilai) !!}
+            }],
+
+            responsive: {
+                rules: [{
+                    condition: {
+                        maxWidth: 500
+                    },
+                    chartOptions: {
+                        legend: {
+                            layout: 'horizontal',
+                            align: 'center',
+                            verticalAlign: 'bottom'
+                        }
+                    }
+                }]
+            }
+
+            });
+
+            </script>
 </body>
 
 </html>

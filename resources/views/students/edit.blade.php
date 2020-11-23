@@ -101,8 +101,7 @@
                                 <div class="form-group row">
                                     <label for="avatar" class="col-sm-2 col-form-label">Avatar</label>
                                     <div class="col-sm-10">
-                                        <input type="file" class="form-control" id="avatar" name="avatar"
-                                            value="{{ $student->avatar }}">
+                                        <input type="file" class="form-control" id="avatar" name="avatar">
                                     </div>
                                 </div>
                                 <div class="form-group row">

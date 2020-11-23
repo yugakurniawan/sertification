@@ -128,8 +128,7 @@
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label for="avatar" class="form-control-label">Avatar</label>
-                                        <input type="file" class="form-control" id="avatar" name="avatar"
-                                            value="{{ $student->avatar }}">
+                                        <input type="file" class="form-control" id="avatar" name="avatar">
                                     </div>
                                 </div>
                             </div>

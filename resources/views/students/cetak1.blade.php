@@ -17,7 +17,7 @@
     </style>
 </head>
 <body>
-    <img src="/print_area_kajsdjkawdoilmasdmlamwdipmqwd/IJAZAH DESIGN DEPAN FIX.jpg"
+    <img src="/print_area_kajsdjkawdoilmasdmlamwdipmqwd/IJAZAH DESIGN DEPAN revisi.png"
         style="position:absolute; width:210mm; height:297mm; top:0; z-index:-1;">
     <div style="position:absolute; width:210mm; height:297mm; top:0; z-index:1;">
         <div>
@@ -29,18 +29,14 @@
         </div>
         <div>
             <span style="font-size: 15pt; position: relative; top:410px; left:415px;"
-        class="font-weight-bold">{{ $student->nama }}</span>
-        </div>
-        <div>
-            <span style="font-size: 15pt; position: relative; top:425px; left:415px;"
         class="font-weight-bold">{{ $student->tempat_lahir }} / {{ date("d F Y",strtotime($student->tgl_lahir)) }}</span>
         </div>
         <div>
-            <span style="font-size: 15pt; position: relative; top:440px; left:415px;"
+            <span style="font-size: 15pt; position: relative; top:425px; left:415px;"
         class="font-weight-bold">{{ $student->universitas }}</span>
         </div>
         <div>
-            <span style="font-size: 15pt; position: relative; top:455px; left:415px;"
+            <span style="font-size: 15pt; position: relative; top:440px; left:415px;"
         class="font-weight-bold">{{ $student->jurusan }}</span>
         </div>
     </div>

@@ -6,6 +6,7 @@ use App\Models\MeetingStudent;
 use App\Models\Student;
 use App\Models\Score;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class StudentsController extends Controller
 {
@@ -88,14 +89,15 @@ class StudentsController extends Controller
      */
     public function update(Request $request, Student $student)
     {
-        $request->validate([
+        $data = $request->validate([
             'nama' => 'required',
             'universitas' => 'required',
             'fakultas' => 'required',
             'jurusan' => 'required',
             'prodi' => 'required',
             'angkatan' => 'required',
-            'telp' => 'required'
+            'telp' => 'required',
+            'avatar' => 'nullable'
         ]);
 
         Student::where('id', $student->id)
@@ -120,6 +122,16 @@ class StudentsController extends Controller
                   $student->avatar = $request->file('avatar')->getClientOriginalName();
                   $student->save();
               }
+
+            //   if ($request->avatar) {
+            //     if ($student->avatar) {
+            //         File::delete(storage_path('app/' . $student->avatar));
+            //     }
+            //     $data['avatar'] = $request->avatar->store('public/images');
+            //     }
+
+            //     $student->update($data);
+
               return redirect('/students')->with('status', 'Data Mahasiswa Berhasil Diperbarui!');
     }
 
