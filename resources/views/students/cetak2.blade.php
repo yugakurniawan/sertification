@@ -39,7 +39,7 @@
             <span style="font-size: 15pt; position: relative; top:214px; left:250px">{{ $student->nama }}</span>
         </div>
         <div>
-            <span style="font-size: 15pt; position: relative; top:220px; left:250px">{{ $student->tempat_lahir }} / {{ date("d F Y",strtotime($student->tgl_lahir)) }}</span>
+            <span style="font-size: 15pt; position: relative; top:220px; left:250px">{{ $student->tempat_lahir }} / {{ tgl(date('Y-m-d', strtotime($student->tgl_lahir))) }}</span>
         </div>
         <div>
             <span style="font-size: 15pt; position: relative; top:227px; left:250px">{{ $student->universitas }}</span>
@@ -65,7 +65,6 @@
                             <th align="center">Tahun</th>
                             <th>Kegiatan</th>
                             <th>Tugas</th>
-                            <th align="center">Nilai</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -75,7 +74,6 @@
                             <td align="center">{{ $project->tahun }}</td>
                             <td style="padding-left:10px; padding-right:10px;">{{ $project->kegiatan }}</td>
                             <td style="padding-left:10px; padding-right:10px;">{{ $project->tugas }}</td>
-                            <td align="center">{{ $project->nilai }}</td>
                         </tr>
                         @empty
                             <tr><td colspan="5" align="center">Data tidak tersedia</td></tr>
@@ -93,12 +91,12 @@
                     <table class="table project-table">
                         <thead>
                             <tr>
-                                <th colspan="5">Academic Study</th>
+                                <th colspan="5">Transkrip Nilai</th>
                             </tr>
                             <tr>
                                 <th>No</th>
                                 <th>Semester</th>
-                                <th>Nilai</th>
+                                <th>IP</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -106,13 +104,28 @@
                             <tr>
                                 <td align="center">{{ $loop->iteration }}</td>
                                 <td style="padding-left:10px; padding-right:10px;">Semester {{ $score->semester }}</td>
-                                <td align="center">
-                                    {{ $score->nilai }}
-                                </td>
-                            </tr>
+                                <td align="center">{{ $score->nilai }}</td>
                             @empty
                                 <tr><td colspan="3" align="center">Data tidak tersedia</td></tr>
                             @endforelse
+                            <tr class="bg-primary">
+                                <td colspan="2" align="center" class="text-white">Rata-Rata</td>
+                                <td class="text-white" align="center">
+                                @php
+                                try {
+                                $ipk = 0;
+                                foreach ($student->projects as $value) {
+                                $ipk += $value->nilai;
+                                }
+
+                                $avg = $ipk / count($student->projects);
+                                echo number_format((float) $avg, 2, '.', '');
+                                } catch(\Throwable $th){
+                                echo 0;
+                                }
+                                @endphp
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -121,7 +134,7 @@
         </div>
 
         <div>
-        <span style="font-size: 15pt; position: relative; top:50px; left:475px">Surabaya, {{ date('d F Y') }}</span>
+        <span style="font-size: 15pt; position: relative; top:50px; left:475px">Surabaya, {{ $tanggal }}</span>
         </div>
 
         <script src="https://code.highcharts.com/highcharts.js"></script>

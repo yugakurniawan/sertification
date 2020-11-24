@@ -7,6 +7,7 @@ use App\Models\Student;
 use App\Models\Score;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Carbon;
 
 class StudentsController extends Controller
 {
@@ -96,11 +97,12 @@ class StudentsController extends Controller
             'jurusan' => 'required',
             'prodi' => 'required',
             'angkatan' => 'required',
+            'alamat' => 'required',
             'tempat_lahir' => 'required',
             'tgl_lahir' => 'required',
             'telp' => 'required',
-            'ao' => 'required',
-            'as' => 'required',
+            'ao' => 'nullable',
+            'as' => 'nullable',
             'avatar' => 'nullable'
         ]);
 
@@ -190,7 +192,9 @@ class StudentsController extends Controller
             $nilai[] = $scr->nilai;
         }
 
-        return view('students.cetak2', compact('student','semester','nilai'));
+        $tanggal = Carbon::now()->isoFormat(' D MMMM Y');
+
+        return view('students.cetak2', compact('student','semester','nilai','tanggal'));
     }
 
     public function detail_kehadiran(MeetingStudent $meeting_student) {

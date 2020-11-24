@@ -366,7 +366,7 @@
                                                     }
                                                     @endphp
                                                     {{ $hadir }}/{{ count($meeting_student->meeting->jadwal) }}
-                                                    ({{ ($hadir/count($meeting_student->meeting->jadwal)) * 100 }}%)
+                                                    ({{ $hadir == 0 ? 0 : ($hadir/count($meeting_student->meeting->jadwal)) * 100 }}%)
                                                 </td>
                                                 <td>
                                                     <a href="/detail-kehadiran/{{ $meeting_student->id }}"

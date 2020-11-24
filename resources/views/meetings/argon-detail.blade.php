@@ -7,7 +7,6 @@
         <div class="card bg-default shadow">
             <div class="card-header bg-transparent border-0">
                 <a href="/jadwal/create/{{ $meeting->id }}" class="btn btn-primary">Tambah Jadwal</a>
-
                 @if (session('status'))
                 <div class="alert alert-success" style="margin-top:20px">
                     {{ session('status') }}

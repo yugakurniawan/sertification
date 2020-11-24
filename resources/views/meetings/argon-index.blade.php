@@ -31,6 +31,7 @@
                             <td>{{ $mtg->nama }}</td>
                             <td>
                                 <a href="/meetings/{{ $mtg->id}}" class="btn btn-info btn-sm">Detail</a>
+                                <a href="/meetings/{{ $mtg->id}}/edit" class="btn btn-warning btn-sm">Edit</a>
                                 <a href="/meetings/{{ $mtg->id}}" class="btn btn-danger btn-sm"
                                     onclick="event.preventDefault(); $(this).siblings('form').submit();">Hapus</a>
                                 <form action="/meetings/{{$mtg->id}}" method="post">

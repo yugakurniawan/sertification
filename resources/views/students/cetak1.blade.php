@@ -21,7 +21,7 @@
         style="position:absolute; width:210mm; height:297mm; top:0; z-index:-1;">
     <div style="position:absolute; width:210mm; height:297mm; top:0; z-index:1;">
         <div>
-            <img src="{{$student->getAvatar()}}" style="width:3cm;height:4cm; position: relative; top:835px; left:110px;" alt="Avatar">
+            <img src="{{asset(Storage::url($student->avatar))}}" style="width:3cm;height:4cm; position: relative; top:835px; left:110px;" alt="Avatar">
         </div>
         <div style="text-align:center; position: relative; top:355px; left:234px; width:461px;">
             <span style="font-size: 20pt;"
@@ -29,7 +29,7 @@
         </div>
         <div>
             <span style="font-size: 15pt; position: relative; top:410px; left:415px;"
-        class="font-weight-bold">{{ $student->tempat_lahir }} / {{ date("d F Y",strtotime($student->tgl_lahir)) }}</span>
+        class="font-weight-bold">{{ $student->tempat_lahir }} / {{ tgl(date('Y-m-d', strtotime($student->tgl_lahir))) }}</span>
         </div>
         <div>
             <span style="font-size: 15pt; position: relative; top:425px; left:415px;"

@@ -73,7 +73,12 @@ class MeetingsController extends Controller
      */
     public function edit(Meeting $meeting)
     {
-        return view('meetings.argon-edit', compact('meeting'));
+
+        // $meetingstudents = [];
+        // foreach($meeting->students as $student){
+        //     $meetingstudents[] = $student->id;
+        // }
+        return view('meetings.argon-edit',['students'=> Student::all()], compact('meeting'));
     }
 
     /**
@@ -99,6 +104,8 @@ class MeetingsController extends Controller
                 'student_id' => $student
             ]);
         }
+
+        // dd($meeting->students);
         return redirect('/meetings')->with('status', 'Meeting Berhasil Perbarui!');
     }
 
