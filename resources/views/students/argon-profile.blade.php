@@ -16,7 +16,7 @@
                     <div class="col-lg-3 order-lg-2">
                         <div class="card-profile-image">
                             <a href="#">
-                                <img src="{{$student->getAvatar()}}" class="rounded-circle" style="width:150px;height:150px" alt="Avatar">
+                                <img src="{{asset(Storage::url($student->avatar))}}" class="rounded-circle" style="width:150px;height:150px" alt="Avatar">
                             </a>
                         </div>
                     </div>

@@ -96,43 +96,49 @@ class StudentsController extends Controller
             'jurusan' => 'required',
             'prodi' => 'required',
             'angkatan' => 'required',
+            'tempat_lahir' => 'required',
+            'tgl_lahir' => 'required',
             'telp' => 'required',
+            'ao' => 'required',
+            'as' => 'required',
             'avatar' => 'nullable'
         ]);
 
-        Student::where('id', $student->id)
-          ->update([
-              'nama' => $request->nama,
-              'universitas' => $request->universitas,
-              'angkatan' => $request->angkatan,
-              'fakultas' => $request->fakultas,
-              'jurusan' => $request->jurusan,
-              'prodi' => $request->prodi,
-              'angkatan' => $request->angkatan,
-              'tempat_lahir' => $request->tempat_lahir,
-              'tgl_lahir' => $request->tgl_lahir,
-              'telp' => $request->telp,
-              'ao' => $request->ao,
-              'as' => $request->as,
-              'avatar' => $request->avatar
-              ]);
+        // Student::where('id', $student->id)
+        //   ->update([
+        //       'nama' => $request->nama,
+        //       'universitas' => $request->universitas,
+        //       'angkatan' => $request->angkatan,
+        //       'fakultas' => $request->fakultas,
+        //       'jurusan' => $request->jurusan,
+        //       'prodi' => $request->prodi,
+        //       'angkatan' => $request->angkatan,
+        //       'tempat_lahir' => $request->tempat_lahir,
+        //       'tgl_lahir' => $request->tgl_lahir,
+        //       'telp' => $request->telp,
+        //       'ao' => $request->ao,
+        //       'as' => $request->as,
+        //       'avatar' => $request->avatar
+        //       ]);
 
-              if($request->hasFile('avatar')){
-                  $request->file('avatar')->move('images/',$request->file('avatar')->getClientOriginalName());
-                  $student->avatar = $request->file('avatar')->getClientOriginalName();
-                  $student->save();
-              }
+        //       if($request->hasFile('avatar')){
+        //           $request->file('avatar')->move('images/',$request->file('avatar')->getClientOriginalName());
+        //           $student->avatar = $request->file('avatar')->getClientOriginalName();
+        //           $student->save();
+        //       }
 
-            //   if ($request->avatar) {
-            //     if ($student->avatar) {
-            //         File::delete(storage_path('app/' . $student->avatar));
-            //     }
-            //     $data['avatar'] = $request->avatar->store('public/images');
-            //     }
+              if ($request->avatar) {
+                if ($student->avatar) {
+                    File::delete(storage_path('app/' . $student->avatar));
+                }
+                $data['avatar'] = $request->avatar->store('public/images');
+                }
 
-            //     $student->update($data);
+            $student->update($data);
 
-              return redirect('/students')->with('status', 'Data Mahasiswa Berhasil Diperbarui!');
+            // dd($data);
+
+            return back()->with('status', 'Data Mahasiswa Berhasil Diperbarui!');
     }
 
     /**
